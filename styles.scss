@@ -1,0 +1,771 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&display=swap");
+
+$barlow: "Barlow";
+$fraunces: "Fraunces";
+$soft-red: hsl(7, 99%, 70%);
+$yellow: hsl(51, 100%, 49%);
+$dark-desaturated-cyan: hsl(167, 40%, 24%);
+$dark-blue-text: hsl(198, 62%, 26%);
+$dark-moderate-cyan-footer: hsl(168, 34%, 41%);
+$dark-desaturated-blue: hsl(212, 27%, 19%);
+$very-dark-grayish-blue: hsl(213, 9%, 39%);
+$dark-grayish-blue: hsl(232, 10%, 55%);
+$grayish-blue: hsl(210, 4%, 67%);
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+
+@mixin heading {
+  font-size: 2.5rem;
+  font-family: $fraunces;
+  color: $dark-desaturated-blue;
+  margin: 15px 0px 30px 0px;
+  width: 70%;
+  font-weight: 900;
+}
+
+@mixin paragraph {
+  font-size: 1.2rem;
+  font-family: $barlow;
+  color: $grayish-blue;
+  line-height: 1.8rem;
+}
+
+@mixin content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin learn-more($color) {
+  text-transform: uppercase;
+  font-family: $fraunces;
+  text-decoration: underline;
+  font-size: 1.1rem;
+  text-decoration-thickness: 4px;
+  text-decoration-color: lighten($color, 25%);
+  color: $black;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    text-decoration-color: $color;
+  }
+}
+
+@mixin grid-content {
+  position: absolute;
+  bottom: 75px;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin grid-content-heading($color) {
+  font-family: $fraunces;
+  font-size: 2rem;
+  text-align: center;
+  color: $color;
+}
+
+@mixin grid-content-paragraph($color) {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  font-family: $barlow;
+  line-height: 1.8rem;
+  color: $color;
+}
+
+@mixin mobile-menu {
+  nav ul {
+    display: none;
+  }
+  .hamburger {
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      display: block;
+    }
+  }
+  .mobile-nav {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    ul {
+      list-style-type: none;
+      background: $white;
+      padding: 20px 0px 20px 0px;
+      position: relative;
+      margin-top: 45px;
+      &:after {
+        position: absolute;
+        top: -30px;
+        right: 0px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-bottom: 30px solid $white;
+        border-left: 30px solid transparent;
+      }
+    }
+    li {
+      display: flex;
+      justify-content: center;
+      margin: 35px 0px 35px 0px;
+    }
+    a {
+      text-decoration: none;
+      color: hsl(0, 0%, 52%);
+      font-size: 1.2rem;
+      font-family: $barlow;
+    }
+    .mobile-contact {
+      background: $yellow;
+      color: $black;
+      padding: 16px 30px 16px 30px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      font-family: $fraunces;
+      font-size: 1rem;
+    }
+  }
+}
+
+@mixin flex-and-width {
+  .brand,
+  .audience,
+  .grid {
+    flex-direction: column;
+  }
+  .brand-text,
+  .audience-image,
+  .audience-text,
+  .design,
+  .photography {
+    width: 100%;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  font-size: 17px;
+}
+
+body {
+  margin: 0px 0px 0px 0px;
+  padding: 0;
+}
+
+.site-wrapper {
+  position: relative;
+  overflow-x: hidden;
+}
+
+header {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 90%;
+  height: fit-content;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+}
+
+.hamburger img {
+  display: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 180px;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  margin-left: auto;
+  width: 35%;
+  justify-content: space-between;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: $white;
+  font-size: 1.2rem;
+  font-family: $barlow;
+}
+
+.mobile-nav {
+  opacity: 0;
+}
+
+.contact {
+  background: $white;
+  color: $black;
+  padding: 18px 30px 18px 30px;
+  border-radius: 30px;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  font-family: $fraunces;
+}
+
+.contact:hover {
+  background: hsla(0, 0%, 100%, 0.315);
+  color: $white;
+}
+
+.hero {
+  background-image: url("./images/desktop/image-header.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 250px;
+}
+
+.hero img {
+  width: 40px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 160px;
+}
+
+.hero h1 {
+  margin: 0;
+  color: $white;
+  text-align: center;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-family: $fraunces;
+  font-weight: 900;
+}
+
+.brand {
+  display: flex;
+  width: 100%;
+}
+
+.brand-text {
+  @include content;
+  background: hsl(30, 7%, 95%);
+}
+
+.brand-text-content {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.brand-text-content h2 {
+  @include heading;
+}
+
+.brand-text-content p {
+  @include paragraph;
+}
+
+.brand-text-content a {
+  @include learn-more($color: hsl(51, 100%, 49%));
+}
+
+.brand-img {
+  width: 50%;
+}
+
+.brand-img img {
+  display: block;
+  min-width: 100%;
+}
+
+.audience {
+  display: flex;
+  width: 100%;
+}
+
+.audience-image {
+  width: 50%;
+}
+
+.audience-image img {
+  display: block;
+  width: 100%;
+}
+
+.audience-text {
+  background: hsl(30, 7%, 95%);
+  @include content;
+}
+
+.audience-text-content {
+  width: 80%;
+}
+
+.audience-text-content h2 {
+  @include heading;
+}
+
+.audience-text-content p {
+  @include paragraph;
+}
+
+.audience-text-content a {
+  @include learn-more($color: hsl(5, 84%, 68%));
+}
+
+.grid {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.design,
+.photography {
+  width: 50%;
+  padding: 400px 100px 400px 100px;
+  position: relative;
+}
+
+.design {
+  background: url("./images/desktop/image-graphic-design.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.photography {
+  background: url("./images/desktop/image-photography.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.design-content {
+  @include grid-content;
+}
+
+.design-content h3 {
+  @include grid-content-heading($color: $dark-desaturated-cyan);
+}
+
+.design-content p {
+  @include grid-content-paragraph($color: $dark-desaturated-cyan);
+}
+
+.photography-content {
+  @include grid-content;
+}
+
+.photography-content h3 {
+  @include grid-content-heading($color: $dark-desaturated-blue);
+}
+
+.photography-content p {
+  @include grid-content-paragraph($color: $dark-desaturated-blue);
+}
+
+.testimonials {
+  background-color: hsl(30, 7%, 95%);
+  padding: 180px 0px 180px 0px;
+}
+
+.testimonials h3 {
+  margin: 0;
+  text-align: center;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-family: $fraunces;
+  color: $dark-grayish-blue;
+  letter-spacing: 4px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 0px 80px 0px;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.card {
+  width: 30%;
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.card blockquote {
+  margin: 80px 0px 80px 0px;
+  font-family: $barlow;
+  color: $very-dark-grayish-blue;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+
+.card h4 {
+  text-align: center;
+  font-size: 1.3rem;
+  font-family: $fraunces;
+  margin-bottom: 0px;
+}
+
+.testimonials-role {
+  color: $grayish-blue;
+  font-family: $barlow;
+  text-align: center;
+  font-size: 1rem;
+  margin: 10px 0px 10px 0px;
+}
+
+.gallery {
+  display: flex;
+}
+
+.image-milkbottles,
+.image-orange,
+.image-cone,
+.image-sugarcubes {
+  width: 25%;
+}
+
+.gallery img {
+  display: block;
+  max-width: 100%;
+}
+
+footer {
+  background: $dark-moderate-cyan-footer;
+  padding: 80px 0px;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-logo svg {
+  transform: scale(1.4);
+}
+
+#footer-logo {
+  fill: $dark-desaturated-cyan;
+}
+
+.footer-nav {
+  display: flex;
+  list-style-type: none;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 50px 0px;
+}
+
+.footer-nav li {
+  margin: 0px 20px;
+}
+
+.footer-nav li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: $dark-desaturated-cyan;
+  font-family: $barlow;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    color: $white;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  margin: 20px auto;
+}
+
+.social a {
+  display: block;
+}
+
+.facebook,
+.instagram,
+.twitter,
+.pinterest {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social svg {
+  transform: scale(1.4);
+  &:hover {
+    path {
+      fill: $white;
+    }
+  }
+}
+
+.active {
+  opacity: 1 !important;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  @include mobile-menu;
+  @include flex-and-width;
+  .hero {
+    background-image: url("./images/mobile/image-header.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero img {
+    padding-top: 100px;
+  }
+  .brand-text {
+    padding: 50px 0px 50px 0px;
+  }
+  .audience-text {
+    padding: 60px 0px 60px 0px;
+  }
+  .brand-text-content,
+  .audience-text-content {
+    width: 90%;
+  }
+  .brand-text-content h2,
+  .audience-text-content h2 {
+    text-align: center;
+    margin: 0;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2rem;
+  }
+  .brand-text-content p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 30px 0px 30px 0px;
+  }
+  .audience-text-content p {
+    text-align: center;
+    font-size: 1.1rem;
+    width: 100%;
+    word-wrap: break-word;
+  }
+  .brand-text-content a,
+  .audience-text-content a {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+  .brand-img {
+    width: 100%;
+    order: -1;
+  }
+  .brand-img img {
+    max-width: 100%;
+  }
+  .design {
+    background: url("./images/mobile/image-graphic-design.jpg") no-repeat;
+    background-size: cover;
+  }
+  .photography {
+    background: url("./images/mobile/image-photography.jpg");
+    background-size: cover;
+  }
+  .cards {
+    flex-direction: column;
+  }
+  .card {
+    width: 100%;
+  }
+  .gallery {
+    flex-wrap: wrap;
+  }
+  .gallery > div {
+    flex: 50%;
+  }
+  .social {
+    width: 50%;
+  }
+  .testimonials {
+    padding: 80px 0px 80px 0px;
+  }
+  .testimonials h3 {
+    font-size: 1.2rem;
+  }
+  .cards {
+    padding: 0px 0px 30px 0px;
+    width: 80%;
+  }
+  .card {
+    margin-top: 80px;
+  }
+  .card blockquote {
+    margin: 40px 0px 40px 0px;
+    font-size: 1.2rem;
+  }
+  .card h4 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  .testimonials-role {
+    font-size: 0.9rem;
+  }
+  .design-content,
+  .photography-content {
+    width: 85%;
+  }
+  .design-content h3,
+  .photography-content h3 {
+    font-size: 1.8rem;
+  }
+  .design-content p,
+  .photography-content p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  @include mobile-menu;
+  @include flex-and-width;
+  .hero {
+    background-image: url("./images/mobile/image-header.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  .hero img {
+    padding-top: 100px;
+  }
+  .brand-text-content,
+  .audience-text-content {
+    width: 90%;
+  }
+  .brand-text {
+    padding: 50px 0px 50px 0px;
+  }
+  .audience-text {
+    padding: 60px 0px 60px 0px;
+  }
+  .brand-text-content h2,
+  .audience-text-content h2 {
+    text-align: center;
+    margin: 0;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2.4rem;
+  }
+  .brand-text-content p {
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    margin: 30px 0px 30px 0px;
+  }
+  .audience-text-content p {
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    width: 100%;
+    word-wrap: break-word;
+  }
+  .brand-text-content a,
+  .audience-text-content a {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .brand-img {
+    width: 100%;
+    order: -1;
+  }
+  .brand-img img {
+    max-width: 100%;
+  }
+  .design {
+    background: url("./images/mobile/image-graphic-design.jpg") no-repeat;
+    background-size: cover;
+  }
+  .photography {
+    background: url("./images/mobile/image-photography.jpg");
+    background-size: cover;
+  }
+  .cards {
+    flex-direction: column;
+  }
+  .card {
+    width: 100%;
+  }
+  .gallery {
+    flex-wrap: wrap;
+  }
+  .gallery > div {
+    flex: 50%;
+  }
+  .social {
+    width: 50%;
+  }
+  .testimonials {
+    padding: 80px 0px 80px 0px;
+  }
+  .testimonials h3 {
+    font-size: 1.6rem;
+  }
+  .cards {
+    padding: 0px 0px 30px 0px;
+    width: 80%;
+  }
+  .card {
+    margin-top: 80px;
+  }
+  .card blockquote {
+    margin: 40px 0px 40px 0px;
+    font-size: 1.4rem;
+  }
+  .card h4 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  .testimonials-role {
+    font-size: 1.1rem;
+  }
+  .design-content,
+  .photography-content {
+    width: 85%;
+  }
+  .design-content h3,
+  .photography-content h3 {
+    font-size: 2rem;
+  }
+  .design-content p,
+  .photography-content p {
+    font-size: 1.4rem;
+  }
+}
